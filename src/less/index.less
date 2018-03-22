@@ -14,6 +14,8 @@
 }
 
 body{
+  min-width: 1200px;
+  max-width: 1200px;
   header{
     height: 65px;
     padding: 0 15px;
@@ -148,8 +150,10 @@ body{
               width: 20px;
               height: 20px;
               font-size: 15px;
-              .iconfont.on{
-                display: none;
+              .iconfont {
+                &.on {
+                  display: none;
+                }
               }
             }
             .sanjiao{
@@ -372,7 +376,7 @@ body{
       padding-top: 50px;
       margin: 0 auto;
       width: 90%;
-      background-color: #eaeaea;
+      background-color: white;
       >p{
         text-align: left;
         font-weight: bold;
@@ -394,9 +398,7 @@ body{
           }
         }
       }
-
     }
   }
-
   }
 

@@ -9,7 +9,7 @@
   <link href="./img/header/icon.png" rel="Shortcut Icon">
   <link rel="stylesheet" type="text/css" href="./css/service-item.min.css"/>
   <link rel="stylesheet" type="text/css" href="./css/reset.min.css"/>
-  <link rel="stylesheet" href="https://at.alicdn.com/t/font_596617_tpn8fn72jg2gwrk9.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_596617_yei7cniz5ne1att9.css">
   <script type="text/javascript" src="./js/jquery-1.10.1.js"></script>
   <script type="text/javascript" src="./js/index.js"></script>
 </head>
@@ -73,24 +73,19 @@
         <div class="service-link fuwu">
           <h3 ><span>服务项目</span></h3>
           <div class="link-item" id="fw">
-            <ul>
-              <li class="link-list">
-                <img src="./img/server/51931b93-0f2a-468f-9a92-a87c36c9c9f1_thumb.jpg" alt="" class="link-pic">
-                <div class="link-text">
-                  <h1>油烟机拆机洗</h1>
-                  <span>我们是TCL集团旗下家电服务品牌 服务流程：1.验机 2....</span>
-                  <div class="link-dec">
-                  <span class="price"><span class="number">208</span>元/台</span>
-                  <span>已售437</span></div>
 
-                </div>
-              </li>
-            </ul>
+          </div>
+          <div class="more">
+            <div class="more-text">
+              查看更多项目
+              <span><i class="iconfont icon-jiantouxia"></i></span>
+            </div>
           </div>
         </div>
         <div class="service-link shop">
           <h3><span>商家简介</span><br><span class="box"></span></h3>
-          <div class="link-item" id="sj"></div>
+          <div class="link-item" id="sj">
+          </div>
         </div>
         <div class="service-link users">
           <h3>
@@ -98,7 +93,11 @@
           </h3>
           <div class="conments">
             <!--评论列表-->
-            <div id="pl"></div>
+            <div >
+              <ul id="pl">
+
+              </ul>
+            </div>
 
             <div class="pages">
               <a href="javascripts:;" class="up nopage" >上一页</a>
@@ -112,6 +111,7 @@
                 <a href="javascripts:;" class="num">7</a>
                 <a href="javascripts:;" class="num">8</a>
                 <a href="javascripts:;" class="num">9</a>
+                <a href="javascripts:;" class="num">10</a>
                 ...
               </div>
               <a href="javascripts:;" class="down">下一页></a>
@@ -151,43 +151,7 @@
       </div>
       <dl>
         <dt>热门城市</dt>
-        <dd>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
-          <a href="">北京</a>
+        <dd id="daoway">
         </dd>
       </dl>
     </div>
@@ -253,7 +217,72 @@
     </div>
   </footer>
 </div>
-
-
+<script type="text/javascript" src="./js/template-web.js"></script>
+<script type="text/html"  id="items">
+  {{each items}}
+  <ul>
+    <li class="link-list">
+      <img src="{{$value.imgUrl}}" alt="" class="link-pic">
+      <div class="link-right">
+        <div class="link-text">
+          <h1>{{$value.name}}</h1>
+          <span class="link-gray">{{$value.desc}}</span>
+          <div class="link-dec">
+            <span class="price"><span class="number">{{$value.price}}</span>元/台</span>
+            <span>已售{{$value.soldCount}}</span>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  {{/each}}
+</script>
+<script type="text/html" id="items2">
+  {{each items}}
+    <div class="company">{{$value.company}}
+        <img src="./img/server/renzheng.jpg"></div>
+    <div class="profile">{{$value.profile}}</div>
+  {{/each}}
+</script>
+<script type="text/html" id="city3">
+  {{each city}}
+  <a href="javascript">{{$value.name}}</a>
+  {{/each}}
+</script>
+<script type="text/html" id="comments">
+{{each comments}}
+    <li class="pl-list">
+        <img src="{{$value.iconUrl}}" alt="" class="pl-pic">
+        <div class="link-right">
+        <div class="link-text">
+        <ul>
+        <li>{{$value.nick}}</li>
+        <li><span  style="width: 70px; margin-left: 0"><span class="noColor" style="left: 0">
+          {{}}
+        <img src="./img/server/red_star.png" width="10px" height="auto">
+        </span></span><em style="margin-left: 10px">2018-03-21</em>
+        </li>
+        <li class="commentdetail">准时到达，服务专业，态度热情</li>
+    <li class="commentposition"><img src="./img/server/position.jpg" width="9" height="11">北京  朝阳区</li>
+    </ul>
+    </div>
+    </div>
+    </li>
+{{/each}}
+</script>
+<script type="text/javascript">
+  $(function () {
+      $.get('/proxy/localhost:3000/getItem',function (data) {
+          $('#fw').append(template('items',{items:data}))
+          $('#sj').append(template('items2',{items:data}))
+      })
+      $.get('/proxy/localhost:3000/getCity',function (data) {
+          $('#daoway').append(template('city3',{city:data}))
+      })
+        $.get('/proxy/localhost:3000/getComment',function (data) {
+          $('#pl').append(template('comments',{comments:data}))
+      })
+  })
+</script>
 </body>
 </html>

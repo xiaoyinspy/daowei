@@ -11,11 +11,15 @@
     display: none;
   }
 }
-#app {
+body {
+  min-width: 1200px;
+  max-width: 1200px;
+}
+body #app {
   width: 100%;
   padding-top: 65px;
 }
-#app header {
+body #app header {
   margin: 0 auto;
   width: 100%;
   height: 65px;
@@ -28,12 +32,12 @@
   justify-content: space-around;
   align-items: center;
 }
-#app header.on {
+body #app header.on {
   position: fixed;
   left: 0;
   right: 0;
 }
-#app header .header_pic {
+body #app header .header_pic {
   width: 240px;
   height: 43px;
   margin: auto 0;
@@ -41,10 +45,10 @@
   background-repeat: no-repeat;
   background-size: 100%;
 }
-#app header .address {
+body #app header .address {
   font-weight: bolder;
 }
-#app header .address .icon {
+body #app header .address .icon {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -53,21 +57,21 @@
   background-repeat: no-repeat;
   background-size: 100%;
 }
-#app header .address .city:hover {
+body #app header .address .city:hover {
   color: red;
 }
-#app header .header_menu .nemu_container {
+body #app header .header_menu .nemu_container {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
 }
-#app header .header_menu .nemu_container .menu_list {
+body #app header .header_menu .nemu_container .menu_list {
   margin-left: 20px;
 }
-#app header .header_menu .nemu_container .menu_list.on:hover {
+body #app header .header_menu .nemu_container .menu_list.on:hover {
   color: red;
 }
-#app header .header_menu .nemu_container .menu_li {
+body #app header .header_menu .nemu_container .menu_li {
   margin-left: 20px;
   width: 80px;
   height: 30px;
@@ -77,56 +81,74 @@
   border-radius: 5px;
   text-align: center;
 }
-#app .service-center {
+body #app .service-center {
   width: 90%;
   margin: 0px auto;
   overflow: hidden;
 }
-#app .service-center .center-left {
+body #app .service-center .center-left {
   float: left;
   width: 80%;
 }
-#app .service-center .center-left > h1 {
+body #app .service-center .center-left > h1 {
   margin: 30px 0;
 }
-#app .service-center .center-left #daoway {
+body #app .service-center .center-left #daoway {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   white-space: nowrap;
 }
-#app .service-center .center-left #daoway .tab_list {
+body #app .service-center .center-left #daoway .tab_list {
   width: 23%;
   padding: 1px;
   margin: 10px 0;
   cursor: pointer;
 }
-#app .service-center .center-left #daoway .tab_list:hover {
+body #app .service-center .center-left #daoway .tab_list:hover {
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
 }
-#app .service-center .center-left #daoway .tab_list .tab_pic {
+body #app .service-center .center-left #daoway .tab_list .tab_pic {
   margin: auto;
   width: 210px;
   height: 210px;
 }
-#app .service-center .center-left #daoway .tab_list > h2 {
+body #app .service-center .center-left #daoway .tab_list > h2 {
   margin: 10px 0;
   font-weight: bolder;
 }
-#app .service-center .center-left #daoway .tab_list .tab_dec {
+body #app .service-center .center-left #daoway .tab_list .tab_dec {
   display: flex;
   justify-content: space-between;
 }
-#app .service-center .center-left #daoway .tab_list .tab_dec > span {
+body #app .service-center .center-left #daoway .tab_list .tab_dec > span {
   text-align: center;
   font-size: 13px;
 }
-#app .service-center .center-right {
+body #app .service-center .center-left .more {
+  width: 100%;
+  text-align: center;
+}
+body #app .service-center .center-left .more .more-text {
+  width: 15%;
+  display: inline-block;
+  margin: 5px auto;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  color: #929292;
+}
+body #app .service-center .center-left .more > span {
+  font-size: 20px;
+}
+body #app .service-center .center-right {
   width: 20%;
   float: right;
 }
-#app footer .footer_top .footer_des {
+body #app footer .footer_top .footer_des {
   background-color: white;
   display: flex;
   white-space: nowrap;
@@ -135,17 +157,17 @@
   align-content: center;
   text-align: center;
 }
-#app footer .footer_top .footer_des .title {
+body #app footer .footer_top .footer_des .title {
   font-size: 30px;
   font-family: "微软雅黑";
   font-weight: 800;
   margin: 20px 0 10px;
 }
-#app footer .footer_top .footer_des .note {
+body #app footer .footer_top .footer_des .note {
   font-size: 22px;
   color: #3d3838;
 }
-#app footer .footer_top .footer_des .lists {
+body #app footer .footer_top .footer_des .lists {
   width: 100%;
   padding-top: 10px;
   background: #fff;
@@ -157,28 +179,28 @@
   justify-content: center;
   white-space: nowrap;
 }
-#app footer .footer_top .footer_des .lists list {
+body #app footer .footer_top .footer_des .lists list {
   margin: 0 10px;
 }
-#app footer .footer_top dl {
+body #app footer .footer_top dl {
   width: 90%;
   margin: 0 auto;
   overflow: hidden;
   background-color: white;
 }
-#app footer .footer_top dl dt {
+body #app footer .footer_top dl dt {
   float: left;
   font-family: " 微软雅黑";
   font-size: 18px;
   font-weight: 700;
 }
-#app footer .footer_top dl dd {
+body #app footer .footer_top dl dd {
   margin-left: 30px;
   width: 90%;
   line-height: 30px;
   float: left;
 }
-#app footer .footer_top dl dd a {
+body #app footer .footer_top dl dd a {
   width: 30px;
   line-height: 30px;
   font-size: 16px;
@@ -190,33 +212,33 @@
   cursor: pointer;
   font-family: "微软雅黑";
 }
-#app footer .footer_bottom {
+body #app footer .footer_bottom {
   height: 250px;
   padding-top: 50px;
   margin: 0 auto;
   width: 90%;
 }
-#app footer .footer_bottom > p {
+body #app footer .footer_bottom > p {
   text-align: left;
   font-weight: bold;
   display: inline-block;
   color: #1d1515;
   font-size: 18px;
 }
-#app footer .footer_bottom .partners {
+body #app footer .footer_bottom .partners {
   width: 90%;
   height: 150px;
   margin: 0 auto;
   white-space: nowrap;
 }
-#app footer .footer_bottom .partners .partner {
+body #app footer .footer_bottom .partners .partner {
   float: left;
   width: 9%;
   padding: 3px;
 }
-#app footer .footer_bottom .partners .partner > img {
+body #app footer .footer_bottom .partners .partner > img {
   width: 90%;
 }
-#app footer .footer_bottom .partners .partner .beian {
+body #app footer .footer_bottom .partners .partner .beian {
   background-color: #e3e3e3;
 }

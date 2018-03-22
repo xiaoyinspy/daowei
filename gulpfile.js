@@ -12,17 +12,19 @@ var liverload = require('gulp-livereload')
 var del = require('del')
 var imagemin = require('gulp-imagemin')
 
+var Proxy = require('gulp-connect-proxy');
+
 
 //删除文件
 gulp.task('clean',function () {
-    return del(['dist/css/*','dist/js/*','dist/*.html'])
+    return del(['public/css/*','public/js/*','public/*.html'])
 })
 
 // 压缩img
 // gulp.task('img', function() {
 //     return gulp.src('src/img1/**/*')        //引入所有需处理的Img
 //         .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))      //压缩图片
-//         .pipe(gulp.dest('dist/img/'))
+//         .pipe(gulp.dest('public/img/'))
 //         .pipe(connect.reload())
 //     // .pipe(notify({ message: '图片处理完成' }));
 // });
@@ -30,10 +32,10 @@ gulp.task('clean',function () {
 gulp.task('js',function () {
     return gulp.src('src/js/*.js') //操作的源文件
         // .pipe(concat('built.js')) //合并到临时文件
-        .pipe(gulp.dest('dist/js')) //生成目标文件夹
+        .pipe(gulp.dest('public/js')) //生成目标文件夹
         // .pipe(uglify())  //压缩
         // .pipe(rename({suffix:'.min'}))   //重命名
-        .pipe(gulp.dest('dist/js')) //输出
+        .pipe(gulp.dest('public/js')) //输出
         .pipe(connect.reload())
 })
 
@@ -51,14 +53,14 @@ gulp.task('css',['less'], function () {
         // .pipe(concat('built.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rename({suffix:'.min'}))
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('public/css'))
         .pipe(connect.reload())
 })
 
 gulp.task('html',function () {
     return gulp.src('src/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('public'))
         .pipe(connect.reload())
 })
 
@@ -67,12 +69,17 @@ gulp.task('html',function () {
 gulp.task('server',['default'],function () {
     //配置服务器选项
     connect.server({
-        root:'dist/',
+        root:'public/',
         livereload:true,
-        port:5000
-    })
+        port:5000,
+        middleware: function (connect, opt) {
+            opt.route = '/proxy';
+            var proxy = new Proxy(opt);
+            return [proxy];
+        }
+    });
     //自动开启端口
-    open('http://localhost:5000/service-item.html')
+    open('http://localhost:5000/index.html')
     //监视目标文件
     gulp.watch('src/js/*.js',['js']);
     gulp.watch('src/*.html',['html']);

@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="keyword" content="到位，到家，上门服务，家政服务，上门维修，上门按摩，搬家，北京家政服务，上海家政服务"><meta content="telephone=no" name="format-detection"><meta name="description" content="到位是中国领先的O2O上门服务平台，汇聚上万种高品质到家服务。家政服务，上门按摩，上门维修，搬家，一站直约，安心到家。现已覆盖北京，上海，深圳，广州，杭州等70多个城市。"><title>到位APP - 高品质上门服务直约平台，家政服务，上门按摩，上门维修，搬家，安心到家！</title><link href="./img/header/icon.png" rel="Shortcut Icon"><!--<link rel="stylesheet" type="text/css" href="./css/built.min.css"/>--><!--<link rel="stylesheet" type="text/css" href="./css/reset.css"/>--><link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.1.6/css/swiper.css"><link rel="stylesheet" href="https://at.alicdn.com/t/font_596617_tpn8fn72jg2gwrk9.css"><link rel="stylesheet" type="text/css" href="./css/index.min.css"><link rel="stylesheet" type="text/css" href="./css/reset.min.css"></head><body><header id="header"><div class="header_pic"></div><div class="address"><span class="icon"></span><span>北京</span><span class="city">切换城市</span></div><div class="header_menu"><ul class="nemu_container"><li class="menu_list on">首页</li><li class="menu_list on">到位APP</li><li class="menu_list on">服务商</li><li class="menu_list on">商家入驻</li><li class="menu_list on">风云APP</li><li class="menu_list on">关于我们</li><li class="menu_li">商家登录</li></ul></div></header><section class="carousel_container"><!--轮播图--><div class="carousel swiper-container"><div class="banner swiper-wrapper"><div class="banner1 swiper-slide"></div><div class="banner2 swiper-slide"></div><div class="banner3 swiper-slide"></div></div><div class="carousel_nav swiper-pagination"></div></div><!--二级菜单--><div class="menu_daowei"><ul class="menu_second"></ul></div></section><div class="content"></div><footer class="footer"><div class="footer_top"><div class="footer_des"><span class="title">到位<span class="red">服务</span>保障</span> <span class="note">到位平台担保交易安全，交易未成功100%退款</span><ul class="lists"><li class="list"><img src="./img/footer/anquan.jpg"> <span class="safe">优选服务</span></li><li class="list"><img src="./img/footer/anquan.jpg"> <span class="safe">全程保障</span></li><li class="list"><img src="./img/footer/anquan.jpg"> <span class="safe">安全无忧</span></li></ul></div><dl><dt>热门城市</dt><dd id="city"><a href="">北京</a></dd></dl></div><div class="footer_bottom"><p class="">合作伙伴</p><ul class="partners"><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li><li class="partner"><img src="./img/footer/guanjia.jpg" alt=""></li></ul><span class="beian">©2015 版权所有 到位 daoway.com 京ICP备15001471号-1 北京邻家科技有限公司</span></div></footer><script src="https://cdn.bootcss.com/Swiper/4.1.6/js/swiper.js"></script><script>var swiper = new Swiper('.swiper-container', {
+            loop:true,
+            spaceBetween: 30,
+            effect: 'fade',
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });</script></body><script type="text/javascript" src="./js/jquery-1.10.1.js"></script><script type="text/javascript" src="./js/template-web.js"></script><script type="text/javascript" src="./js/index.js"></script><script type="text/html" id="template">{{each list}}
+        <li class="menu_list">
+            <div class="menu_title">
+                <span>{{$value.serviceIndex}}</span><span class="icon"><span class="icon-jiantouarrow487 iconfont"></span></span>
+                <span class="sanjiao"></span>
+            </div>
+            <ul class="menu_items">
+                {{each $value.serviceType}}
+                <li class="memu_list">{{$value}}</li>
+                {{/each}}
+            </ul>
+        </li>
+        {{/each}}</script><script type="text/html" id="daowei">{{each list}}
+    <div class="server">
+        <div class="sever_title">{{$value.serviceIndex}}</div>
+        <div class="server_item">
+            <ul class="server_container">
+                 {{each $value.serviceType}}
+                <li class="server">{{$value}}</li>
+                 {{/each}}
+            </ul>
+        </div>
+        <div class="server_project">
+            {{each $value.shopList}}
+            <div class="project">
+                <img class="project_img" src="{{$value.imgUrl}}">
+                <div class="project_title">{{$value.serviceName}}</div>
+                <div class="project_content">{{$value.description}}</div>
+                <div class="project_price">
+                    <span>{{$value.price}}元/次</span><div class="more">查看详情</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+{{/each}}</script><script type="text/html" id="template2">{{each city}}
+    <a href="javascript:;">{{$value.name}}</a>
+{{/each}}</script><script type="text/javascript">function menu() {
+        const $lis  = $('.menu_daowei>.menu_second>.menu_list')
+        console.log($lis);
+        $lis.on('mouseover',function () {
+            $(this).children('ul').addClass('on')
+            $(this).children('.menu_title').children('.sanjiao').addClass('on')
+            $(this).children('.menu_title').children('.icon').children('.iconfont').addClass('on')
+        }).on('mouseleave',function () {
+            $(this).children('ul').removeClass('on')
+            $(this).children('.menu_title').children('.sanjiao').removeClass('on')
+            $(this).children('.menu_title').children('.icon').children('.iconfont').removeClass('on')
+        })
+
+    }
+    $.get('/proxy/localhost:3000/getShop',function (data) {
+        $('.content').append(template('daowei', {list: data}));
+        $('.menu_second').html(template('template',{list:data}));
+        menu();
+    })
+    $.get('/proxy/localhost:3000/getCity',function (data) {
+        console.log(data);
+       $('#city').append(template('template2',{city:data}))
+    })</script></html>

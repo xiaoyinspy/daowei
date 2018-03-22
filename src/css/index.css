@@ -11,6 +11,10 @@
     display: none;
   }
 }
+body {
+  min-width: 1200px;
+  max-width: 1200px;
+}
 body header {
   height: 65px;
   padding: 0 15px;
@@ -351,7 +355,7 @@ body footer .footer_bottom {
   padding-top: 50px;
   margin: 0 auto;
   width: 90%;
-  background-color: #eaeaea;
+  background-color: white;
 }
 body footer .footer_bottom > p {
   text-align: left;
