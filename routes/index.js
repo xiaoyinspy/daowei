@@ -1408,7 +1408,7 @@ router.get('/getService',function(req,res,next){
 router.get('/getComment',function (req,res,next) {
     const page = req.query.page || 1;
     const projection = null;
-    const _filter ={
+    const filter ={
       limit:10,
       sort: '-createtime',
       //默认升序，用降序
@@ -1418,6 +1418,11 @@ router.get('/getComment',function (req,res,next) {
         res.json(docs)
     });
 })
+router.get('/getCommentCount',function (req,res,next) {
+    Comment.find({},function (err,docs) {
+        res.json(docs.length)
+    })
+})
 router.get('/getCity',function(req,res,next){
     City.find({},function(err,docs){
         if(!err){
@@ -1425,7 +1430,6 @@ router.get('/getCity',function(req,res,next){
         }
     })
 });
-
 
 
 module.exports = router;

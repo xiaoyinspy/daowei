@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="app">
-  <header>
+  <header id="header">
     <div class="header_pic">
     </div>
     <div class="address">
@@ -25,7 +25,7 @@
       <ul class="nemu_container">
         <li class="menu_list on">首页</li>
         <li class="menu_list on">到位APP</li>
-        <li class="menu_list on">服务商</li>
+        <li class="menu_list on"  onclick="open('http://localhost:5000/service.html')" >服务商</li>
         <li class="menu_list on">商家入驻</li>
         <li class="menu_list on">风云APP</li>
         <li class="menu_list on">关于我们</li>
@@ -88,17 +88,13 @@
           </div>
         </div>
         <div class="service-link users">
-          <h3>
-            <span>用户评论</span><em>（10300条评论<br><span class="box"></span></em>
+          <h3 id="count">
+
           </h3>
           <div class="conments">
             <!--评论列表-->
-            <div >
-              <ul id="pl">
-
-              </ul>
+            <div id="pl" >
             </div>
-
             <div class="pages">
               <a href="javascripts:;" class="up nopage" >上一页</a>
               <div class="showpage">
@@ -218,6 +214,7 @@
   </footer>
 </div>
 <script type="text/javascript" src="./js/template-web.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.21.0/moment.min.js"></script>
 <script type="text/html"  id="items">
   {{each items}}
   <ul>
@@ -251,6 +248,7 @@
 </script>
 <script type="text/html" id="comments">
 {{each comments}}
+<ul>
     <li class="pl-list">
         <img src="{{$value.iconUrl}}" alt="" class="pl-pic">
         <div class="link-right">
@@ -258,17 +256,24 @@
         <ul>
         <li>{{$value.nick}}</li>
         <li><span  style="width: 70px; margin-left: 0"><span class="noColor" style="left: 0">
-          {{}}
-        <img src="./img/server/red_star.png" width="10px" height="auto">
-        </span></span><em style="margin-left: 10px">2018-03-21</em>
+          {{each $value.stars}}
+              <img src="{{$value}}" width="10px" height="auto">
+          {{/each}}
+        </span></span><em style="margin-left: 10px">{{$value.createtime | dateFormat 'YYYY-MM-DD'}}</em>
         </li>
-        <li class="commentdetail">准时到达，服务专业，态度热情</li>
-    <li class="commentposition"><img src="./img/server/position.jpg" width="9" height="11">北京  朝阳区</li>
+        <li class="commentdetail">{{$value.comment}}</li>
+    <li class="commentposition"><img src="./img/server/position.jpg" width="9" height="11">{{$value.city}}  {{$value.area}}</li>
     </ul>
     </div>
     </div>
     </li>
+</ul>
 {{/each}}
+</script>
+<script type="text/html" id="time">
+
+  <span>用户评论</span><em>（{{time}}条评论)<br><span class="box"></span></em>
+
 </script>
 <script type="text/javascript">
   $(function () {
@@ -276,11 +281,102 @@
           $('#fw').append(template('items',{items:data}))
           $('#sj').append(template('items2',{items:data}))
       })
+      //获取评论总数
+      $.get('/proxy/localhost:3000/getCommentCount',function (data) {
+          console.log(data);
+          $('#count').html(template('time',{time:data}))
+      })
       $.get('/proxy/localhost:3000/getCity',function (data) {
           $('#daoway').append(template('city3',{city:data}))
       })
-        $.get('/proxy/localhost:3000/getComment',function (data) {
-          $('#pl').append(template('comments',{comments:data}))
+      $.get('/proxy/localhost:3000/getComment',function (data) {
+         template.defaults.imports.dateFormat = function(date, format){
+             return moment(date).format(format);
+         };
+         //获取星星数目
+           function  getStar(data){
+             return  data.map(function (value,index) {
+                 let count =value.star
+                 let stars = []
+                 for (var i = 0; i < 5; i++) {
+                     if(count>0 ){
+                         count --
+                         stars.push("./img/server/red_star.png")
+                     }else{
+                         stars.push("./img/server/gray_star.png")
+                     }
+                 }
+                 console.log(stars);
+                 value.stars = stars
+                 return value
+             })
+            }
+            let newData =getStar(data)
+          $('#pl').append(template('comments',{comments:newData}))
+      })
+      /*页数图标， 循环遍历 + 监听 */
+      //封装发送get()请求
+      function getPages() {
+          $.get('/proxy/localhost:3000/getComment?page='+ page ,function (data) {
+              template.defaults.imports.dateFormat = function(date, format){
+                  return moment(date).format(format);
+              };
+              //获取星星数目
+              function  getStar(data){
+                  return  data.map(function (value,index) {
+                      let count =value.star
+                      let stars = []
+                      for (var i = 0; i < 5; i++) {
+                          if(count>0 ){
+                              count --
+                              stars.push("./img/server/red_star.png")
+                          }else{
+                              stars.push("./img/server/gray_star.png")
+                          }
+                      }
+                      console.log(stars);
+                      value.stars = stars
+                      return value
+                  })
+              }
+              let newData =getStar(data)
+              $('#pl').html(template('comments',{comments:newData}))
+          })
+      }
+      $pages = $('.pages>.showpage>.num')
+      //存储一下当前页
+      let page = 1
+      $pages.click(
+          function (event) {
+              const target = event.target
+              $pages.removeClass('act')
+//              $pages.css("background","white")
+//              $(target).css('background','red')
+             $(target).addClass('act')
+               page = $(this).text()
+              console.log(page)
+              getPages()
+          }
+      )
+      $('.up').click(function () {
+          if( page ==1 ){
+              return false
+          }else{
+              page --
+              $pages.removeClass('act')
+              $($pages.get(page-1)).addClass('act')
+              getPages()
+          }
+      })
+      $('.down').click(function () {
+          if( page ==10 ){
+              return false
+          }else{
+              page ++
+              $pages.removeClass('act')
+              $($pages.get(page-1)).addClass('act')
+              getPages()
+          }
       })
   })
 </script>

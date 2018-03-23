@@ -12,15 +12,38 @@
   }
 }
 body {
-  min-width: 1200px;
-  max-width: 1200px;
+  min-width: 1520px;
+  max-width: 1520px;
 }
 body header {
   height: 65px;
   padding: 0 15px;
+  background-color: white;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+}
+body header.on {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 300;
+}
+body header.active {
+  animation: active 2s ;
+  transform-origin: center top;
+}
+@keyframes active {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 0.9;
+  }
 }
 body header .header_pic {
   width: 240px;
@@ -300,6 +323,10 @@ body footer .footer_top .footer_des .title {
   font-family: "微软雅黑";
   font-weight: 800;
   margin: 20px 0 10px;
+}
+body footer .footer_top .footer_des .title .red {
+  color: red;
+  font-weight: 800;
 }
 body footer .footer_top .footer_des .note {
   font-size: 22px;

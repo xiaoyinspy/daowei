@@ -12,8 +12,8 @@
   }
 }
 body {
-  min-width: 1200px;
-  max-width: 1200px;
+  min-width: 1520px;
+  max-width: 1520px;
 }
 body #app {
   width: 100%;
@@ -31,11 +31,28 @@ body #app header {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
 }
 body #app header.on {
+  width: 100%;
   position: fixed;
   left: 0;
-  right: 0;
+  top: 0;
+  z-index: 300;
+}
+body #app header.active {
+  animation: active 2s ;
+  transform-origin: center top;
+}
+@keyframes active {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 0.9;
+  }
 }
 body #app header .header_pic {
   width: 240px;
@@ -318,7 +335,7 @@ body #app #service-item .nav .nav-center .service-link .conments .pages .showpag
   line-height: 28px;
   margin: 30px 5px 0 ;
 }
-body #app #service-item .nav .nav-center .service-link .conments .pages .showpage > a.num.on {
+body #app #service-item .nav .nav-center .service-link .conments .pages .showpage > a.num.act {
   background-color: red;
   color: white;
 }
@@ -358,6 +375,10 @@ body #app footer .footer_top .footer_des .title {
   font-family: "微软雅黑";
   font-weight: 800;
   margin: 20px 0 10px;
+}
+body #app footer .footer_top .footer_des .title .red {
+  color: red;
+  font-weight: 800;
 }
 body #app footer .footer_top .footer_des .note {
   font-size: 22px;
@@ -413,6 +434,7 @@ body #app footer .footer_bottom {
   padding-top: 50px;
   margin: 0 auto;
   width: 90%;
+  background-color: white;
 }
 body #app footer .footer_bottom > p {
   text-align: left;

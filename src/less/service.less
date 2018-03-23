@@ -13,8 +13,8 @@
   }
 }
 body{
-  min-width: 1200px;
-  max-width: 1200px;
+  min-width: 1500px;
+  max-width: 1500px;
   #app{
     width: 100%;
     padding-top: 65px;
@@ -28,16 +28,31 @@ body{
       position: absolute;
       left: 0;
       top: 0;
-      background-color: white;
+      background-color: rgba(256,256,256,0.9);
       display: flex;
       justify-content: space-around;
       align-items: center;
+      box-shadow:0 3px 6px rgba(0, 0, 0, .12);
       &.on{
+        width: 100%;
         position: fixed;
         left: 0;
-        right: 0;
-        //transition: rotate 1s ease-out;
-        //transform: rotateX(-180deg);
+        top: 0;
+        z-index: 300;
+      }
+      &.active{
+        animation: active 2s ;
+        transform-origin: center top;
+        @keyframes active {
+          0%{
+            transform: rotateX(90deg);
+            opacity: 0.3;
+          }
+          100%{
+            transform: rotateX(0deg);
+            opacity: 0.9;
+          }
+        }
       }
       .header_pic{
         width: 240px;
@@ -107,10 +122,10 @@ body{
           justify-content: space-around;
           white-space: nowrap;
           .tab_list{
-            width: 23%;
             padding: 1px;
             margin: 10px 0;
             cursor: pointer;
+            padding: 20px;
             &:hover{
               box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
             }
@@ -174,6 +189,10 @@ body{
             font-family: "微软雅黑";
             font-weight: 800;
             margin: 20px 0 10px;
+            .red{
+              color: red;
+              font-weight: 800;
+            }
           }
           .note{
             font-size: 22px;
@@ -232,6 +251,7 @@ body{
         padding-top: 50px;
         margin: 0 auto;
         width: 90%;
+        background-color: white;
         >p{
           text-align: left;
           font-weight: bold;

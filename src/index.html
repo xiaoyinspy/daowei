@@ -25,7 +25,7 @@
 			<ul class="nemu_container">
 				<li class="menu_list on">首页</li>
 				<li class="menu_list on">到位APP</li>
-				<li class="menu_list on">服务商</li>
+				<li class="menu_list on"  onClick="location.href='http://localhost:5000/service.html'" >服务商</li>
 				<li class="menu_list on">商家入驻</li>
 				<li class="menu_list on">风云APP</li>
 				<li class="menu_list on">关于我们</li>
@@ -230,5 +230,6 @@
         console.log(data);
        $('#city').append(template('template2',{city:data}))
     })
+
 </script>
 </html>

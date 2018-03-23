@@ -15,7 +15,7 @@
 </head>
 <body>
   <div id="app">
-    <header>
+    <header id="header">
       <div class="header_pic">
       </div>
       <div class="address">
@@ -25,7 +25,7 @@
         <ul class="nemu_container">
           <li class="menu_list on">首页</li>
           <li class="menu_list on">到位APP</li>
-          <li class="menu_list on">服务商</li>
+          <li class="menu_list on"  onclick="open('http://localhost:5000/service.html')" >服务商</li>
           <li class="menu_list on">商家入驻</li>
           <li class="menu_list on">风云APP</li>
           <li class="menu_list on">关于我们</li>
@@ -166,6 +166,7 @@
   <a href="javascript">{{$value.name}}</a>
   {{/each}}
 </script>
+<script src="./js/index.js"></script>
 <script type="text/javascript">
     $(function () {
         $.get('/proxy/localhost:3000/getCity',function (data) {
@@ -183,8 +184,6 @@
                 $('#daoway').append(template('service',{services:data}))
             })
         })
-
-
     })
 </script>
 </html>

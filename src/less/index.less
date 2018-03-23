@@ -14,15 +14,38 @@
 }
 
 body{
-  min-width: 1200px;
-  max-width: 1200px;
+  min-width: 1520px;
+  max-width: 1520px;
+  //transform-style:preserve-3d;
   header{
     height: 65px;
     padding: 0 15px;
-    //background-color: pink;
+    background-color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    box-shadow:0 3px 6px rgba(0, 0, 0, .12);
+    &.on{
+      width: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 300;
+    }
+    &.active{
+      animation: active 2s ;
+      transform-origin: center top;
+      @keyframes active {
+        0%{
+          transform: rotateX(90deg);
+          opacity: 0.3;
+        }
+        100%{
+          transform: rotateX(0deg);
+          opacity: 0.9;
+        }
+      }
+    }
     .header_pic{
       width: 240px;
       height: 43px;
@@ -71,8 +94,6 @@ body{
 
       }
     }
-
-
   }
   .carousel_container{
     height:420px;
@@ -318,6 +339,10 @@ body{
           font-family: "微软雅黑";
           font-weight: 800;
           margin: 20px 0 10px;
+          .red{
+            color: red;
+            font-weight: 800;
+          }
         }
         .note{
           font-size: 22px;

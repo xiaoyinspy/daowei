@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./css/menu.min.css">
   <script src="./js/jquery-1.10.1.js"></script>
   <script src="./js/template-web.js"></script>
+  <script src="./js/index.js"></script>
 </head>
 <body>
 <header id="header">
@@ -20,7 +21,7 @@
     <ul class="nemu_container">
       <li class="menu_list on">首页</li>
       <li class="menu_list on">到位APP</li>
-      <li class="menu_list on">服务商</li>
+      <li class="menu_list on" onclick="open('http://localhost:5000/service.html')">服务商</li>
       <li class="menu_list on">商家入驻</li>
       <li class="menu_list on">风云APP</li>
       <li class="menu_list on">关于我们</li>
@@ -44,10 +45,10 @@
             <div class="link-text">
               <h1>家庭日常保洁</h1>
               <span>
-                <span>价格&nbsp&nbsp</span><span>元/小时</span>
+                <span>价格&nbsp</span><span class="red">45元/小时</span>
+                <span class="gray">
+                 <span class="line">原价50元</span>
               </span>
-              <span class="gray">
-                原价 <span class="line">50元</span>
               </span>
               <div class="link-dec">
                 <span class="price">已售
@@ -57,7 +58,7 @@
             </div>
           </div>
           <div class="link-right">
-            <img src="" alt="" class="link-code">
+            <img src="./img/server/code.png" alt="" class="link-code">
             <span>扫一扫</span>
             <span class="red">立刻预约</span>
           </div>
@@ -110,12 +111,12 @@
         <div class="center_right_top">
           <h2>服务商</h2>
           <div class="item_description">
-            <img src="" alt="" class="steward">
-            <span>管家帮</span>
+            <img src="./img/server/6a57cae2-985a-4d37-ae13-1ce186a7f4a7.jpg" alt="" class="steward">
+            <span class="title">管家帮</span>
             <span class="item_text">
-            <span class="item_list"><span>成功接单</span> <span>244</span></span>
-            <span class="item_list"><span>成功接单</span> <span>244</span></span>
-            <span class="item_list"><span>成功接单</span> <span>244</span></span>
+            <span class="item_list"><span>成功接单</span> <span class="red">244</span></span>
+            <span class="item_list"><span>成功接单</span> <span class="red">244</span></span>
+            <span class="item_list"><span>成功接单</span> <span class="red">244</span></span>
           </span>
           </div>
         </div>
